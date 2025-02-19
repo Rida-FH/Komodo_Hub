@@ -82,6 +82,7 @@ class Student(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     grade = db.Column(db.Integer, nullable=False)
     school_id = db.Column(db.Integer, db.ForeignKey("school.school_id"), nullable=False)
+    student_code = db.Column(db.String(7), nullable=False, unique=True)
     submissions = db.relationship("StudentSubmission", backref="student", lazy="select")
 
 # student teacher table
