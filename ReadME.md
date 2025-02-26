@@ -13,3 +13,4 @@ To get started:
 3. Set up .env file inside app folder
 4. Run Migrations: flask db upgrade
 5. To run project: flask run
+
