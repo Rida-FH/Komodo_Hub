@@ -1,11 +1,16 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
-    <h2 class="text-center">Login</h2>
-    <form method="POST">
+<div class="login-container">
+    <div class="background-circles">
+        <div class="circle red"></div>
+        <div class="circle yellow"></div>
+        <div class="circle green"></div>
+    </div>
+    <h1 class="login-title">Login</h1>
+    <form method="POST" class="login-box">
         {{ form.hidden_tag() }}
         <div class="mb-3">
             {{ form.email.label(class="form-label") }}
@@ -15,7 +20,7 @@
             {{ form.password.label(class="form-label") }}
             {{ form.password(class="form-control") }}
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary go-btn">GO!</button>
     </form>
 </div>
 {% endblock %}

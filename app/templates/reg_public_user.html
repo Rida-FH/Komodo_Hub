@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Register as Public User{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card public-user">
+        <div class="title">
+            <h1>Register User</h1>
+        </div>
+
+        <form>
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Username</label>
+            <input type="text" placeholder="Create username" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Create password" required>
+
+            <label>Re-Type Password</label>
+            <input type="password" placeholder="Confirm password" required>
+
+            <button type="submit" class="go-btn">Go!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

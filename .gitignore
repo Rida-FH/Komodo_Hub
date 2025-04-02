@@ -1,4 +1,8 @@
 venv/
+.venv/
 .env
 migrations/
 __pycache__/
+index.py
+index.html
+notebook.ipynb
