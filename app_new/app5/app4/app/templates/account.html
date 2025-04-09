@@ -1,0 +1,78 @@
+{% extends 'base2.html' %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block content %}
+<div class="account-settings-container">
+    <h1 class="main-title">Account Settings</h1>
+
+    <div class="profile-picture full-profile">
+        <img src="{{ url_for('static', filename='images/cuenta.jpg') }}" alt="Profile Picture">
+        <h2>{{ username }}</h2>
+        <p class="user-type">{{ user_type|capitalize }}</p>
+        <button class="edit-btn" onclick="document.getElementById('profile-picture-input').click()">Change Profile Picture</button>
+        <input type="file" id="profile-picture-input" style="display: none;" onchange="uploadProfilePicture(event)">
+    </div>
+
+    <div class="settings-content">
+        <!-- Left: Email -->
+        <div class="settings-left">
+            <div class="setting-item">
+                <strong>Email:</strong> {{ email }}
+            </div>
+        </div>
+
+        <!-- Right: Username + Password -->
+        <div class="settings-right">
+            <div class="setting-item">
+                <strong>Update Username:</strong>
+                <form action="{{ url_for('update_username') }}" method="POST" class="update-form">
+                    <label for="new_username">New Username:</label>
+                    <input type="text" id="new_username" name="new_username" required>
+                    <button type="submit" class="update-btn">Update Username</button>
+                </form>
+            </div>
+
+            <div class="setting-item">
+                <strong>Change Password:</strong>
+                <form action="{{ url_for('change_password') }}" method="POST" class="update-form">
+                    <label for="current_password">Current Password:</label>
+                    <input type="password" id="current_password" name="current_password" required>
+
+                    <label for="new_password">New Password:</label>
+                    <input type="password" id="new_password" name="new_password" required>
+
+                    <label for="confirm_password">Confirm New Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+
+                    <button type="submit" class="update-btn">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+    function uploadProfilePicture(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append('profile_picture', file);
+
+            fetch("{{ url_for('update_profile_picture') }}", {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      alert('Profile picture updated successfully!');
+                      window.location.reload();
+                  } else {
+                      alert('Failed to update profile picture.');
+                  }
+              });
+        }
+    }
+</script>
+{% endblock %}

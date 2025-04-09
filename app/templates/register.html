@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block title %}Register{% endblock %}
-
-{% block content %}
-<a href="{{ url_for('reg_public_user') }}" class="option-btn public">Public User</a>
-<a href="{{ url_for('student_reg') }}" class="option-btn student">Student</a>
-<a href="{{ url_for('teacher_reg') }}" class="option-btn teacher">Teacher</a>
-{% endblock %}

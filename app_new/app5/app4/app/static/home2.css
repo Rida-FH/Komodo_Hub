@@ -1,0 +1,95 @@
+/* home2.css */
+.communities-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.communities-container h1 {
+    font-size: 3rem;
+    color: #003621;
+    margin-bottom: 20px;
+    font-family: 'DM Serif Display', serif;
+}
+
+.communities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.community-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.community-card h2 {
+    font-size: 1.5rem;
+    color: #003621;
+    margin-bottom: 10px;
+}
+
+.community-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.members-section {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Estilos para los botones de Join y Leave */
+.join-btn, .leave-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.join-btn {
+    background-color: #003621;
+    color: white;
+}
+
+.join-btn:hover {
+    background-color: #002411;
+    transform: scale(1.05);
+}
+
+.leave-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.leave-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Efecto de deshabilitado */
+.join-btn:disabled, .leave-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}

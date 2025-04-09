@@ -1,0 +1,115 @@
+/* Estilos generales */
+.account-settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.settings-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings-left, .settings-right {
+    width: 48%;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.setting-item strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.update-form {
+    margin-top: 10px;
+}
+
+.update-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.update-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.update-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-btn:hover {
+    background-color: #45a049;
+}
+
+.profile-picture {
+    text-align: center;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.edit-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #007B9E;
+}
+.full-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.full-profile img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.full-profile h2 {
+    font-size: 22px;
+    margin: 5px 0;
+    color: #003621;
+}
+
+.user-type {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,100 @@
+{% extends 'base2.html' %}
+
+{% block title %}Community Page{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='communityOptions.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla&family=Poppins&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        <button class = 'join'>Join</button>
+        </div>
+    </div>
+
+
+    <script>
+        // https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp
+        const joinLeave = document.getElementsByClassName("join");
+        Array.from(joinLeave).forEach(function(button) {
+            button.addEventListener("click", function(){
+                if (button.innerHTML == "Join") {
+                    button.innerHTML = "Leave";
+                } else {
+                    button.innerHTML = "Join";
+                }
+
+                button.classList.toggle('join');
+                button.classList.toggle('leave');
+
+             });
+        });
+    </script>
+
+{% endblock %}

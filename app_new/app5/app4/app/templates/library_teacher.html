@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+
+{% block title %}Teacher Library{% endblock %}
+
+{% block content %}
+<div class="library-container">
+    <h1>Library (Teacher View)</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Upload form -->
+    <form action="{{ url_for('upload_teacher_file') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file" required>
+        <button type="submit">Upload File</button>
+    </form>
+
+    <!-- File list -->
+    <h2>Files</h2>
+    {% if files %}
+        <ul class="file-list">
+            {% for file in files %}
+                <li>
+                    {{ file.name }}
+                    {% if not file.is_folder %}
+                        <form action="{{ url_for('delete_file') }}" method="POST" style="display:inline;">
+                            <input type="hidden" name="filename" value="{{ file.name }}">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this file?')">Delete</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No files found in the library.</p>
+    {% endif %}
+</div>
+{% endblock %}

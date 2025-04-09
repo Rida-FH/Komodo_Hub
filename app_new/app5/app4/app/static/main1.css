@@ -1,0 +1,103 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7EFDA;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin: 10px;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #003621;
+    font-size: 16px;
+    margin: 0 15px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+/* Estilo para la imagen de la cuenta en el navbar */
+.account-icon {
+    width: 40px; /* Ajusta el tamaño según necesites */
+    height: 40px;
+    border-radius: 50%; /* Para que sea circular */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.account-icon:hover {
+    transform: scale(1.1); /* Efecto de escala al pasar el mouse */
+}
+.register-btn {
+    background-color: #003621;
+    color: #FAFAFA;
+    padding: 2px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+/* Estilos para la sección de la cuenta */
+.account-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Contenedor del ícono y el texto curvado */
+.account-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilos para el ícono de la cuenta */
+.account-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Estilos para el texto curvado */
+.account-label {
+    position: absolute;
+    bottom: -10px; /* Ajusta la posición vertical */
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg); /* Centra y curva el texto */
+    font-size: 8px; /* Tamaño muy pequeño */
+    color: #555; /* Color discreto */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    text-transform: uppercase; /* Opcional: convierte el texto en mayúsculas */
+    font-weight: bold; /* Opcional: texto en negrita */
+}
+.account-icon {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

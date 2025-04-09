@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+
+{% block title %}Home - Regular User{% endblock %}
+
+{% block content %}
+    <h1 class="main-title">Available Communities</h1>
+
+    <!-- User box -->
+    <div class="user-box">
+        User: {{ username }} <!-- This will display the username -->
+    </div>
+
+    <!-- Communities container -->
+    <div class="communities-container">
+        {% for community in communities %}
+            <div class="community-card">
+                <h2>{{ community.name }}</h2>
+                <p>{{ community.description }}</p>
+                <p><strong>Members:</strong> {{ community.members }}</p>
+
+                <!-- Join/Leave button -->
+                {% if community.name in session.get('joined_communities', []) %}
+                    <a href="{{ url_for('leave_community', community_name=community.name) }}" class="leave-btn">Leave</a>
+                {% else %}
+                    <a href="{{ url_for('join_community', community_name=community.name) }}" class="join-btn">Join</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

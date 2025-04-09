@@ -1,0 +1,163 @@
+body {
+    font-family: 'Karla', sans-serif;
+}
+
+
+.page {
+    background-color: #FAFAFA;
+}
+
+.contentBlock {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+
+}
+
+.communityLogo {
+    width: 80px; /* Adjust as needed */
+    height: auto;
+    margin-right: 20px;
+}
+
+.contentBlockText h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    margin: 0;
+}
+
+.contentBlockText h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.contentBlockText h6 {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.post {
+    display: flex;
+    align-items: flex-start; /* Align text and image at the top */
+    padding: 10px;
+    border-bottom: 2px solid #ddd; /* Line under each post */
+    margin-bottom: 10px; /* Space between posts */
+
+    img {
+        margin-bottom: auto;
+    }
+
+    p {
+        margin-left: 10px;
+        font-family: 'Karla', sans-serif;
+    }
+}
+
+.postsContainer {
+    background-color: white;
+    margin-bottom: 150px; /*Needs to be same size as forum size else forum will cover postsContainer*/
+}
+
+.textarea {
+    background-color: white;
+
+    textarea {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.forum {
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+
+    /*https://www.educative.io/answers/how-to-make-the-div-fill-the-height-of-the-remaining-screen-space
+    https://stackoverflow.com/questions/76869031/absolute-positioned-element-not-sticking-to-the-bottom-when-scrolled*/
+    position: fixed;
+    bottom: 0;
+    
+    height: 150px;/*hardcoded since not makes code wayy complex*/
+
+    /*https://developer.mozilla.org/en-US/docs/Web/CSS/transition*/
+    transition: height 0.3s; /*when sliding up and down*/
+
+    width: 100%;
+
+    #allInput {
+        flex: 1;
+        padding: 20px;
+        align-self: stretch;
+    }
+
+    .images {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        margin: 0; /*Overide other one - refactor*/
+
+        span {
+            order: -1;
+            margin-right: 10px;
+        }
+
+        img {
+            height: 80px;
+            width: 80px;
+            margin-right: 10px;
+
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        img:hover {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 12px rgba(0, 0, 0, 0.2);  /*https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_shadow*/
+        }
+
+        button {
+            order: 1;
+        }
+
+    }
+
+    textarea {
+        width: 100%;
+        height: 100%;
+        
+    }
+    
+    label {
+        cursor: pointer;
+        background-color: white;
+    }
+
+    img { /*Affect paperclip image and user submitted images*/
+        height: 50px;
+    }
+
+    input {
+        background-color: white;
+        display: none;
+    }
+
+    button {
+        background-color: #003621;
+        color: #FAFAFA;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: 2px;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 12px rgba(0, 0, 0, 0.2);  /*https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_shadow*/
+    }
+}

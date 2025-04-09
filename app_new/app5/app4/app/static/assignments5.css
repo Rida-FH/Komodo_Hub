@@ -1,0 +1,101 @@
+.assignment-page-container {
+    display: flex;
+    background-color: #fdf6e3;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    width: 220px;
+    background: #f5f5f5;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.class-list {
+    margin-top: 20px;
+}
+
+.class-tab {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #2e2e2e;
+    transition: all 0.2s ease;
+}
+
+.class-tab:hover {
+    background-color: #e0e0e0;
+}
+
+.class-tab.active {
+    border-left: 4px solid #d65a31;
+    font-weight: bold;
+}
+
+.assignment-main {
+    flex: 1;
+    padding: 30px;
+}
+
+.current-class-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.assignment-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.assignment-form input,
+.assignment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.assignment-form button {
+    background: #013220;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.assignment-form button:hover {
+    background: #02582b;
+}
+
+.assignment-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.assignment-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.submission-line {
+    margin-left: 10px;
+    padding: 5px 0;
+}
+
+.no-submission {
+    color: #888;
+    font-style: italic;
+}

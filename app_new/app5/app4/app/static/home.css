@@ -1,0 +1,171 @@
+/* home.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;700&display=swap');
+
+body {
+    font-family: 'Karla', sans-serif;
+    background-color: #F7EFDA; /* Pink background */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.main-title {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 10px; /* Reduced margin-top */
+    color: #003621;
+    letter-spacing: 10px; /* More spaced letters */
+}
+
+.user-box {
+    position: absolute;
+    top: 150px; /* Adjusted to be closer to the title */
+    left: 20px; /* Top-left corner */
+    background-color: white; /* White background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-size: 16px;
+    color: #003621;
+}
+
+.forum-container {
+    margin: 30px auto 20px; /* Further reduced margin-top */
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.forum-post {
+    background-color: white; /* White background for messages */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.forum-post h3 {
+    font-size: 20px;
+    color: #003621;
+    margin-bottom: 10px;
+}
+
+.forum-post p {
+    font-size: 16px;
+    color: #003621;
+    line-height: 1.6;
+}
+
+.forum-post small {
+    font-size: 14px;
+    color: #666;
+}
+
+.forum-form {
+    background-color: white; /* White background for the form */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    margin-bottom: 20px;
+}
+
+.forum-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.forum-form button {
+    background-color: #003621;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.forum-form button:hover {
+    background-color: #002411;
+}
+.forum-page {
+    display: flex;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 6px 10px;
+    border-radius: 5px;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #dcdcdc;
+}
+
+.forum-content {
+    flex-grow: 1;
+}
+
+.forum-form {
+    margin-bottom: 20px;
+}
+
+.forum-form textarea {
+    width: 100%;
+    padding: 10px;
+    resize: vertical;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.forum-form button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forum-post {
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}

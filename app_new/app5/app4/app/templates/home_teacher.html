@@ -1,0 +1,39 @@
+{% extends 'base2.html' %}
+
+{% block title %}Home - Teacher{% endblock %}
+
+{% block content %}
+    <h1 class="main-title">Home</h1>
+
+    <!-- User box -->
+    <div class="user-box">
+        teacher: {{ username }}
+    </div>
+
+    <!-- Forum container -->
+    <div class="forum-container">
+        <!-- Form to post messages -->
+        <div class="forum-form">
+            <h3>Post a message</h3>
+            <form method="POST" action="{{ url_for('post_to_forum') }}" enctype="multipart/form-data">
+                <textarea name="postText" rows="4" placeholder="Write your message here..." required></textarea>
+                <input type="file" name="fileInput">
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
+        <!-- Forum messages -->
+        {% for msg in messages %}
+        <div class="forum-post">
+            <h3>{{ msg['username'] }}</h3>
+            {% if msg['text'] %}
+                <p>{{ msg['text'] }}</p>
+            {% endif %}
+            {% if msg['image_filename'] %}
+                <img src="{{ '/' + msg['image_filename'] }}" alt="Attached Image" class="forum-image" style="max-width: 300px;">
+            {% endif %}
+            <small>Posted on {{ msg['timestamp'] }}</small>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base2.html' %}
+
+{% block title %}Library{% endblock %}
+
+{% block content %}
+<div class="library-container">
+    <h1>Library</h1>
+    <p>Explore your files and folders:</p>
+
+    <!-- List of files and folders -->
+    <ul class="file-list">
+        {% for file in files %}
+            <li>
+                {% if file.is_folder %}
+                    📁 <a href="{{ url_for('library', folder=file.name) }}">{{ file.name }}</a>
+                {% else %}
+                    📄 <a href="{{ url_for('static', filename='library/' + file.name) }}" target="_blank">{{ file.name }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

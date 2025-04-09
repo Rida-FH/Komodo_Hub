@@ -1,0 +1,52 @@
+{% extends 'base2.html' %}
+
+{% block title %}Community Library{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='library2.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla&family=Poppins&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="title">
+    <h1>Library - {{ community }}</h1>
+</div>
+
+<!-- Aseguramos que el contenedor de los posts (archivos) esté bien posicionado -->
+<div id="postsContainer" class="postsContainer">
+    {% for file in files %}
+        <div class="library-item">
+            {% set file_url = url_for('static', filename='community_library/' ~ community ~ '/' ~ file) %}
+            
+            <!-- Nombre del archivo -->
+            <h4 class="file-name">{{ file }}</h4>
+
+            <!-- Previsualización del archivo -->
+            {% if file.endswith('.pdf') %}
+                <iframe src="{{ file_url }}" class="file-preview" height="150px"></iframe>
+            {% elif file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg') %}
+                <img src="{{ file_url }}" class="file-preview" />
+            {% else %}
+                <p>No preview available</p>
+            {% endif %}
+
+            <!-- Botón de descarga -->
+            <a href="{{ url_for('download_community_file', filename=file_name) }}" class="download-link">Download</a>
+
+        </div>
+    {% else %}
+        <p>No files yet in this library.</p>
+    {% endfor %}
+</div>
+
+<!-- Formulario de carga de archivos (está bien posicionado debajo de los posts) -->
+<form id="libraryForm" class="library" method="POST" action="{{ url_for('upload_community_file') }}" enctype="multipart/form-data">
+    <input type="hidden" name="community" value="{{ community }}">
+    <div id="fileDisplayArea" class="fileDisplayArea">
+        <label for="fileInput">Select File</label>
+        <input type="file" id="fileInput" name="file" required>
+    </div>
+    <button type="submit" class="submit">Submit</button>
+</form>
+
+{% endblock %}

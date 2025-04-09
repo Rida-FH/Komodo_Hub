@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+
+{% block title %}WWF Community Page{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='WWFCommunityPageV4.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla&family=Poppins&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <div class="contentBlock">
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class="contentBlockText">
+            <h2>WWF Community</h2>
+            <h5>Protecting nature for people and planet.</h5>
+            <h6>WWF is one of the world’s largest and most respected independent conservation organizations...</h6>
+        </div>
+    </div>
+    
+    <div class="messages-section">
+        {% for message in messages %}
+            <div class="message">
+                <div class="message-header">
+                    <strong>{{ message.username }}</strong>
+                    <span class="message-timestamp">{{ message.timestamp }}</span>
+                </div>
+                <p>{{ message.text }}</p>
+                {% if message.image_filename %}
+                    <img src="{{ url_for('static', filename=message.image_filename) }}" alt="Image" class="message-img"/>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>No posts yet.</p>
+        {% endfor %}
+    </div>
+    
+    
+    <form class="chat-form" method="POST" action="{{ url_for('post_to_forum') }}" enctype="multipart/form-data">
+        <input type="hidden" name="redirect_community" value="wwf">
+    
+        <textarea name="postText" placeholder="Write your message..." required></textarea>
+    
+        <label for="fileInput" class="attach-btn" title="Attach image">
+            <img src="{{ url_for('static', filename='images/paperclip.png') }}" alt="Attach">
+        </label>
+        <input type="file" name="fileInput" id="fileInput" accept="image/*">
+    
+        <button type="submit" class="send-btn">Submit</button>
+    </form>
+    
+    
+    
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base2.html' %}
+
+{% block title %}Home Page{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='memeberHomeFinal.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla&family=Poppins&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        </div>
+        <a href="{{ url_for('wwf_community_page') }}">
+            <button id="Forum" type = "Forum" class = 'Forum'>Forum</button>
+        </a>
+        <a href="{{ url_for('community_library', community='comunidad_wwf') }}">
+            <button id="Library" type = "Library" class = 'Library'>Library</button>
+        </a>
+    </div>
+    <div class="bottomBorder"></div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        </div>
+        <a href="{{ url_for('wwf_community_page') }}">
+            <button id="Forum" type = "Forum" class = 'Forum'>Forum</button>
+        </a>
+        <a href="{{ url_for('community_library', community='comunidad_wwf') }}">
+            <button id="Library" type = "Library" class = 'Library'>Library</button>
+        </a>
+    </div>
+    <div class="bottomBorder"></div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        </div>
+        <a href="{{ url_for('wwf_community_page') }}">
+            <button id="Forum" type = "Forum" class = 'Forum'>Forum</button>
+        </a>
+        <a href="{{ url_for('community_library', community='comunidad_wwf') }}">
+            <button id="Library" type = "Library" class = 'Library'>Library</button>
+        </a>
+    </div>
+    <div class="bottomBorder"></div>
+
+    <div class = 'joinedCommunities'>
+        <img src="{{ url_for('static', filename='images/WWFLogo.jpg') }}" alt="Community Logo" class="communityLogo">
+        <div class = 'communityText'>
+        <h2>World Wide Fund for Nature (WWF)</h2>
+        <h4>We’re WWF, the leading global environmental charity, and we’re bringing our world back to life. </h4>
+        </div>
+        <a href="{{ url_for('wwf_community_page') }}">
+            <button id="Forum" type = "Forum" class = 'Forum'>Forum</button>
+        </a>
+        <a href="{{ url_for('community_library', community='comunidad_wwf') }}">
+            <button id="Library" type = "Library" class = 'Library'>Library</button>
+        </a>
+    </div>
+    <div class="bottomBorder"></div>
+    
+{% endblock %}

@@ -1,0 +1,48 @@
+
+.joinedCommunities{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: left;
+    background-color: #FAFAFA;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin: 10px;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    font-family: 'Karla', sans-serif;
+}
+
+
+.communityLogo{
+    border-radius: 20%;
+    object-fit: cover;
+    border: 1px solid #003621;
+}
+.communityText{
+    display:flex;
+    flex-direction: column; 
+    color: black;
+}
+
+.communityText h2 {
+    font-family: 'DM Serif Display', serif;
+}
+
+
+.join {
+    background-color: #AAF683;
+    color: #003621;
+    font-family: 'Poppins', sans-serif; 
+}
+
+.leave {
+    background-color: #EE6055;
+    color: #FFD97D;
+    font-family: 'Poppins', sans-serif; 
+}
+
+

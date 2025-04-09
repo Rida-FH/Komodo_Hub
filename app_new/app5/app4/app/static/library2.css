@@ -1,0 +1,104 @@
+/* Título */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Contenedor de archivos */
+#postsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Menos margen entre los elementos */
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Caja de cada archivo */
+.files {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px; /* Tamaño reducido */
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.files:hover {
+    transform: translateY(-2px);
+}
+
+.file-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.file-preview {
+    max-width: 100%;
+    max-height: 100px; /* Tamaño reducido */
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.download-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #50a16b;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.download-link:hover {
+    background-color: #3d8654;
+}
+
+/* Formulario de carga */
+#libraryForm {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    width: 300px;
+    margin: 2rem auto;
+}
+
+#fileDisplayArea {
+    margin-bottom: 1rem;
+}
+
+#fileInput {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.submit {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #50a16b;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.submit:hover {
+    background-color: #3d8654;
+}
+
+/* Asegurarse de que el formulario de carga y el listado de archivos no se solapen */
+body {
+    padding-bottom: 100px;
+}

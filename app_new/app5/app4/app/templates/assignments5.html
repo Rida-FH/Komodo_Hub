@@ -1,0 +1,61 @@
+{% extends 'base2.html' %}
+
+{% block title %}Assignments{% endblock %}
+
+{% block content %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assignments5.css') }}">
+{% endblock %}
+
+
+<div class="assignment-page-container">
+    <aside class="sidebar">
+        <h3>ASSIGNMENTS</h3>
+        <div class="class-list">
+            {% for class_name in classes %}
+                <a href="{{ url_for('assignments_by_class', class_name=class_name) }}"
+                   class="class-tab {% if class_name == current_class %}active{% endif %}">
+                    {{ class_name }}
+                </a>
+            {% endfor %}
+        </div>
+    </aside>
+
+    <main class="assignment-main">
+        <h2 class="current-class-title">{{ current_class }}</h2>
+
+        <section class="assignment-form">
+            <h3>Post a New Assignment</h3>
+            <form method="POST" action="{{ url_for('post_assignment') }}">
+                <input type="hidden" name="class_name" value="{{ current_class }}">
+                <input type="text" name="title" placeholder="Assignment Title" required>
+                <textarea name="description" placeholder="Assignment Description" required></textarea>
+                <button type="submit">Post Assignment</button>
+            </form>
+        </section>
+
+        <section class="submissions-section">
+            <h3>Student Submissions</h3>
+            {% for assignment in assignments %}
+                <div class="assignment-card">
+                    <h4>{{ assignment.title }}</h4>
+                    <p>{{ assignment.description }}</p>
+                    {% if assignment.submissions %}
+                        {% for student, files in assignment.submissions.items() %}
+                            <div class="submission-line">
+                                ✅ <strong>{{ student }}</strong> submitted
+                                {% for file in files %}
+                                    <a href="{{ url_for('download_file', assignment=assignment.title.replace(' ', '_'), student=student, filename=file) }}" target="_blank">{{ file }}</a>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-submission">No submissions yet</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+</div>
+{% endblock %}

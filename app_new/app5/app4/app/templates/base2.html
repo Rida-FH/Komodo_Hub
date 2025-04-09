@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}User Type{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='WWFCommunityPageV4.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='library2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='account_normal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assignments.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assignments1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assignments2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assignments5.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='class_forum.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='communityOptions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='memeberHomeFinal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg_form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    {% if user_type == 'normal' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='home2.css') }}">
+    {% endif %}
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo_silueta.png') }}" alt="Logo" class="logo">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            {% if user_type == 'student' %}
+                <a href="{{ url_for('student_library') }}" class="nav-link">Library</a>
+                <a href="{{ url_for('assignments_page') }}" class="nav-link">Assignments</a>
+            {% elif user_type == 'teacher' %}
+                <a href="{{ url_for('library_teacher') }}" class="nav-link">Library</a>
+                <a href="{{ url_for('assignments_teacher') }}" class="nav-link">Assignments</a>
+            {% elif user_type == 'normal' %}
+                <a href="{{ url_for('member_home') }}" class="nav-link">Communities</a>
+            {% endif %}
+        </div>
+        <div class="nav-right">
+            <a href="{{ url_for('account') }}">
+                <img src="{{ url_for('static', filename='images/cuenta.jpg') }}" alt="Account" class="account-icon">
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
