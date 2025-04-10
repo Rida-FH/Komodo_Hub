@@ -3,3 +3,6 @@ myenv/
 migrations/
 instance/
 __pycache__/
+.venv
+deploy.sh
+.gitignore

@@ -125,6 +125,7 @@ def reg_public_user():
 
     return render_template('reg_public_user.html', form=form)
 
+@routes.route('/')
 @routes.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()

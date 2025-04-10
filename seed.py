@@ -40,9 +40,9 @@ with app.app_context():
     ]
 
     communities = [
-        Community(name='Tech Talk', description='A community for discussing the latest in tech.'),
-        Community(name='Art Club', description='Share and appreciate all forms of art.'),
-        Community(name='Bookworms', description='For book lovers to exchange reads and reviews.'),
+        Community(name='Tiger Talk', description='A community for discussing tiger sightings and facts.'),
+        Community(name='Art Club', description='Share and appreciate all forms of animal drawings.'),
+        Community(name='Komodo Fans', description='For those whose favourite animal is the great komodo dragon.'),
     ]
 
     db.session.add_all(teachers + students + community_users + communities)
