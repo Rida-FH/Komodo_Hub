@@ -171,28 +171,6 @@ final_app
 
 ---
 
-## 📊 Data Flow Summary
-
-```mermaid
-flowchart TD
-    Client[User in Browser]
-    UI[HTML + JS Templates]
-    Routes[Flask Routes (routes.py)]
-    Forms[WTForms (forms.py)]
-    DB[Database (models.py via SQLAlchemy)]
-    Templates[HTML Templates (templates/*.html)]
-
-    Client -->|Request| Routes
-    Routes -->|Render| Templates
-    Routes --> Forms
-    Forms -->|Validate| Routes
-    Routes --> DB
-    DB --> Routes
-    Routes -->|Response| Client
-```
-
----
-
 ## 🧪 Running the App
 
 ```bash
