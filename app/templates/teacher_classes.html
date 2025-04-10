@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Manage My Classes{% endblock %}
+{% block content %}
+<h1>My Classes</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name(size=32) }}
+    {{ form.submit() }}
+</form>
+<ul>
+    {% for c in teacher.classes %}
+        <li>
+            <strong>{{ c.name }}</strong> —
+            <a href="{{ url_for('routes.manage_class', class_id=c.id) }}">Manage</a> |
+            <a href="{{ url_for('routes.class_forum', class_id=c.id) }}">Forum</a> |
+            <a href="{{ url_for('routes.class_assignments', class_id=c.id) }}">Assignments</a>
+            
+        </li>
+    {% else %}
+        <li>No classes yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

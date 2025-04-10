@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}{{ community.name }} Forum{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ community.name }} - Forum</h2>
+    <p class="text-muted">{{ community.description }}</p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content(class="form-control", rows=3, placeholder="Share something...") }}
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Post</button>
+    </form>
+
+    <hr>
+
+    {% for post, author in posts %}
+    <div class="card my-3">
+        <div class="card-body">
+            <p>{{ post.content }}</p>
+            <small class="text-muted">
+                Posted by: {{ author.username }} on {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}
+            </small>
+    
+            {% if post.user_id == user.id %}
+            <form method="POST" action="{{ url_for('routes.delete_community_post', community_id=community.id, post_id=post.id) }}">
+                {{ delete_form.hidden_tag() }}
+                <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

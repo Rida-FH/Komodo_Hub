@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}{{ class_obj.name }} - Forum{% endblock %}
+
+{% block content %}
+<div class="forum-container">
+    <h1>Forum: {{ class_obj.name }}</h1>
+
+    <hr>
+
+    <h2>Create New Post</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content.label }}
+            {{ form.content(rows=4, class="form-control") }}
+        </div>
+        <div class="form-group mt-2">
+            {{ form.attachments.label }}
+            {{ form.attachments(class="form-control", multiple=True) }}
+        </div>
+        {{ form.submit(class="btn btn-primary mt-2") }}
+    </form>
+
+    <hr>
+
+    <h2>Posts</h2>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card my-3">
+                <div class="card-body">
+                    <p class="card-text">{{ post.content }}</p>
+                    
+                    <!-- Who posted it -->
+                    <small class="text-muted">
+                        Posted by: 
+                        {% if post.teacher %}
+                            {{ post.teacher.full_name }} (Teacher)
+                        {% elif post.student %}
+                            {{ post.student.username }} (Student)
+                        {% else %}
+                            Unknown
+                        {% endif %}
+                        on {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}
+                    </small>
+
+                    {% if post.attachments %}
+                        <div class="mt-2">
+                            <strong>Attachments:</strong>
+                            <ul>
+                                {% for file in post.attachments %}
+                                    <li>
+                                        <a href="{{ url_for('static', filename='uploads/' ~ file.filename) }}" target="_blank">
+                                            {{ file.filename }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if session.get('role') == 'teacher' and post.teacher_id == session.get('user_id') %}
+                    <div class="card-footer">
+                        <a href="{{ url_for('routes.edit_post', class_id=class_obj.id, post_id=post.id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form method="POST" action="{{ url_for('routes.delete_post', post_id=post.id, class_id=class_obj.id) }}" style="display:inline-block;">
+                            {{ delete_form.hidden_tag() }}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

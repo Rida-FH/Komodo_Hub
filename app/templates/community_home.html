@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Communities{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Available Communities</h2>
+
+    {% if all_communities %}
+        <div class="mt-4">
+            {% for community in all_communities %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ community.name }}</h5>
+                    <p class="card-text">{{ community.description }}</p>
+
+                    {% if community.id in memberships %}
+                        <a href="{{ url_for('routes.leave_community', community_id=community.id) }}" class="btn btn-danger btn-sm">Leave</a>
+                        <a href="{{ url_for('routes.community_forum', community_id=community.id) }}" class="btn btn-info btn-sm">Enter</a>
+                    {% else %}
+                        <a href="{{ url_for('routes.join_community', community_id=community.id) }}" class="btn btn-primary btn-sm">Join</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No communities available.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Edit Post</h3>
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.content.label(class="form-label") }}
+        {{ form.content(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.attachments.label(class="form-label") }}
+        {{ form.attachments(class="form-control", multiple=True) }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Existing Attachments:</label>
+        {% for att in post.attachments %}
+            <div>
+                <a href="{{ url_for('static', filename='uploads/' ~ att.filename) }}" target="_blank">{{ att.filename }}</a>
+                <label>
+                    <input type="checkbox" name="delete_attachment" value="{{ att.id }}"> Delete
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Post</button>
+    <a href="{{ url_for('routes.class_forum', class_id=post.class_id) }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

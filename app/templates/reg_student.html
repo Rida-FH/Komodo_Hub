@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Register Student{% endblock %}
+{% block content %}
+<div class="register-container">
+    <div class="register-card student">
+        <h1>Register as Student</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.email.label }}<br>{{ form.email(size=32) }}<br>
+            {{ form.password.label }}<br>{{ form.password(size=32) }}<br>
+            {{ form.submit() }}
+        </form>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="flash danger">{{ error }}</div>
+            {% endfor %}
+        {% endfor %}
+        <a href="{{ url_for('routes.login') }}">Already have an account?</a>
+    </div>
+</div>
+{% endblock %}

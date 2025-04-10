@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Teaching Resources{% endblock %}
+{% block content %}
+
+<h2 class="mt-4">Programs & Teaching Resources</h2>
+<p class="mb-4">These materials are provided by the organization to support your teaching efforts.</p>
+<div class="row">
+    {% for file in resources %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">{{ file }}</h5>
+                    <a href="{{ url_for('static', filename='resources/' + file) }}" class="btn btn-primary mt-3" download>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No resources available.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

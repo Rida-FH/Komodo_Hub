@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="login-container">
+    <h1>Login</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.role.label }}<br>{{ form.role() }}<br>
+        {{ form.email.label }}<br>{{ form.email(size=32) }}<br>
+        {{ form.password.label }}<br>{{ form.password(size=32) }}<br>
+        {{ form.submit() }}
+    </form>
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="flash danger">{{ error }}</div>
+        {% endfor %}
+    {% endfor %}
+    <a href="{{ url_for('routes.register_gateway') }}">Don't have an account?</a>
+</div>
+{% endblock %}

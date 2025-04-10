@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Account Settings{% endblock %}
+{% block content %}
+<h1>{{ role.capitalize() }} Settings</h1>
+{% if role == 'student' %}
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Student ID:</strong> {{ user.student_id }}</p>
+{% elif role == 'teacher' %}
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Full Name:</strong> {{ user.full_name }}</p>
+    <p><strong>Teacher ID:</strong> {{ user.teacher_id }}</p>
+{% elif role == 'community' %}
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+{% endif %}
+<img src="{{ url_for('static', filename=user.profile_picture) }}" alt="Profile Picture" width="100">
+<br><br>
+{% if user.two_factor_enabled %}
+    <div class="card mt-4">
+        <div class="card-header">Two-Factor Authentication</div>
+        <div class="card-body">
+            <p>2FA is currently <strong>enabled</strong>.</p>
+            <form method="POST">
+                {{ disable_form.hidden_tag() }}
+                {{ disable_form.action }}
+                {{ disable_form.submit(class="btn btn-danger") }}
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div class="card mt-4">
+        <div class="card-header">Enable Two-Factor Authentication</div>
+        <div class="card-body">
+            <p>Scan this QR code with Google Authenticator or Authy:</p>
+            <img src="data:image/png;base64,{{ qr_data }}" alt="QR Code" class="mb-3">
+            <form method="POST">
+                {{ enable_form.hidden_tag() }}
+                {{ enable_form.token(class="form-control mb-2", placeholder="Enter 6-digit code") }}
+                {{ enable_form.action }}
+                {{ enable_form.submit(class="btn btn-success") }}
+            </form>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

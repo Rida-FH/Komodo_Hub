@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Submissions - {{ assignment.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Submissions for: {{ assignment.title }}</h2>
+    <p>{{ assignment.description }}</p>
+
+    {% if submissions %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Filename</th>
+                    <th>Date Submitted</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sub in submissions %}
+                    <tr>
+                        <td>{{ sub.student.username }}</td>
+                        <td>{{ sub.filename }}</td>
+                        <td>{{ sub.uploaded_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            <a href="{{ url_for('static', filename='submissions/' ~ sub.filename) }}" class="btn btn-sm btn-primary" download>
+                                Download
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No submissions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

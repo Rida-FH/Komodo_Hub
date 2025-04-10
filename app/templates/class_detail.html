@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% block title %}Manage Class{% endblock %}
+{% block content %}
+<h1>Class: {{ class_obj.name }}</h1>
+
+<h2>Assigned Students</h2>
+<ul>
+    {% for s in assigned_students %}
+        <li>{{ s.email }} —
+            <a href="{{ url_for('routes.remove_student', class_id=class_obj.id, student_id=s.id) }}">Remove</a>
+        </li>
+    {% else %}
+        <li>No students assigned.</li>
+    {% endfor %}
+</ul>
+
+<h2>Assign a Student</h2>
+<form method="POST">
+    {{ assign_form.hidden_tag() }}
+    {{ assign_form.student_id.label }} {{ assign_form.student_id() }}
+    {{ assign_form.submit() }}
+</form>
+
+<h2>Rename Class</h2>
+<form method="POST">
+    {{ rename_form.hidden_tag() }}
+    {{ rename_form.name.label }} {{ rename_form.name(size=30) }}
+    {{ rename_form.submit() }}
+</form>
+
+<h2>Delete Class</h2>
+<form method="POST" action="{{ url_for('routes.delete_class', class_id=class_obj.id) }}">
+    {{ delete_form.hidden_tag() }}
+    {{ delete_form.submit(class="danger-button") }}
+</form>
+{% endblock %}

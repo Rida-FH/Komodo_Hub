@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}KomodoHub{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg_form.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+            <!-- <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">FAQ’s</a> -->
+
+            {% if session.get('role') == 'teacher' %}
+            <a href="{{ url_for('routes.teacher_classes') }}" class="nav-link">Manage Classes</a>
+            <a href="{{ url_for('routes.teacher_students') }}" class="nav-link">View Students</a>
+            <a href="{{ url_for('routes.teacher_programs') }}" class="nav-link">Programs</a>
+            <a href="{{ url_for('routes.library') }}" class="nav-link">Library</a>
+
+
+            {% elif session.get('role') == 'student' %}
+            <a href="{{ url_for('routes.student_forum') }}" class="nav-link">My Class</a>
+            <a href="{{ url_for('routes.library') }}" class="nav-link">Library</a>
+            <a href="{{ url_for('routes.my_assignments') }}" class="nav-link">My Assignments</a>
+
+
+            {% elif session.get('role') == 'community' %}
+            <a href="{{ url_for('routes.community_home') }}" class="nav-link">Communities</a>
+            {% for c in communities %}
+            <a href="{{ url_for('routes.community_library', community_id=c.id) }}" class="nav-link">Library – {{ c.name
+                }}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="nav-right">
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('routes.account_settings') }}" class="nav-link">Settings</a>
+            <a href="{{ url_for('routes.logout') }}" class="nav-link">Logout</a>
+            {% else %}
+            <a href="{{ url_for('routes.login') }}" class="nav-link">Login</a>
+            <a href="{{ url_for('routes.register_gateway') }}" class="register-btn">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}My Students{% endblock %}
+{% block content %}
+<h1>My Students</h1>
+
+{% if students %}
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Class</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.email }}</td>
+        <td>{{ student.username }}</td>
+        <td>{{ student.class_.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No students assigned to your classes yet.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Assignments for {{ class_obj.name }}</h2>
+
+    <!-- New Assignment Form -->
+    <div class="card my-4">
+        <div class="card-header">Create New Assignment</div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.title.label(class="form-label") }}
+                    {{ form.title(class="form-control") }}
+                </div>
+                <div class="form-group mt-3">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control", rows="3") }}
+                </div>
+                <div class="form-group mt-3">
+                    {{ form.attachments.label(class="form-label") }}
+                    {{ form.attachments(class="form-control", multiple=true) }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Post Assignment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Existing Assignments -->
+    {% for assignment in assignments %}
+    <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <strong>{{ assignment.title }}</strong>
+            <small class="text-muted">{{ assignment.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+        <div class="card-body">
+            <p>{{ assignment.description }}</p>
+            
+            {% if assignment.attachments %}
+            <p><strong>Attachments:</strong></p>
+            <ul>
+                {% for file in assignment.attachments %}
+                <li>
+                    <a href="{{ url_for('static', filename='uploads/assignments/' ~ file.filename) }}" target="_blank">
+                        {{ file.filename }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class="mt-3">
+                <a href="{{ url_for('routes.edit_assignment', assignment_id=assignment.id) }}" class="btn btn-sm btn-warning">Edit</a>
+            
+                <form method="POST" action="{{ url_for('routes.delete_assignment', assignment_id=assignment.id) }}" style="display:inline-block;" onsubmit="return confirm('Delete this assignment?');">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            
+                <a href="{{ url_for('routes.view_submissions', assignment_id=assignment.id) }}" class="btn btn-sm btn-info">View Submissions</a>
+            </div>
+            
+        </div>
+    </div>
+    {% else %}
+    <p>No assignments yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
