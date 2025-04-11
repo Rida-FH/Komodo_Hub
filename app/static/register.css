@@ -1,3 +1,9 @@
+h1.reg_title {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
 .container {
     display: flex;
     justify-content: center;
