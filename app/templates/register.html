@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Register{% endblock %}
 {% block content %}
-<h1>Register as:</h1>
-<div style="margin-top: 30px;">
+<h1 class="reg_title">Register as:</h1>
+<div class="container">
     <a href="{{ url_for('routes.reg_public_user') }}" class="option-btn public">Community User</a>
     <a href="{{ url_for('routes.reg_student') }}" class="option-btn student">Student</a>
     <a href="{{ url_for('routes.reg_teacher') }}" class="option-btn teacher">Teacher</a>
